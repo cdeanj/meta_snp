@@ -24,6 +24,12 @@ void print_records(map<string,string> &r) {
 	}
 }
 
+void print_snip_db() {
+	for(auto key = snip_db.begin(); key != snip_db.end(); ++key) {
+		cout << key->first << " " << key->second.first << " " << key->second.second << endl;
+	}
+}
+
 int main(int argc, const char *argv[]) {
 	fasta_reader fr(argv[1]);
 	map<string,string> records = fr.read();
@@ -32,11 +38,10 @@ int main(int argc, const char *argv[]) {
 	std::unordered_map<std::string,std::vector<std::string> > alignments = sr.read();
 
 	for(auto key = alignments.begin(); key != alignments.end(); ++key) {
-		for(auto val = key->second.begin(); val != key->second.end(); ++val) {
-			find_snips(records, *val);
-		}
+		find_snips(records, key->second.begin(), key->second.end());
 	}	
-	
+
+	print_snip_db();	
 
 	return 0;
 }
