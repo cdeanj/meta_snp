@@ -13,8 +13,8 @@
 std::map<std::string,std::pair<std::string,int> > snip_db;
 
 bool pattern_exists(const std::string &haplotype_pattern) {
-	for(auto it = snip_db.begin(); it != snip_db.end(); ++it) {
-                if(it->second.first == haplotype_pattern) {
+	for(auto key = snip_db.begin(); key != snip_db.end(); ++key) {
+                if(key->second.first == haplotype_pattern) {
                         return true;
                 }
         }
