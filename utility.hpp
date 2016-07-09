@@ -1,9 +1,12 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
+#include <map>
 #include <string>
 #include <vector>
 #include <utility>
+
+extern std::map<std::string,std::pair<std::string,int> > snip_db;
 
 namespace utility {
 	std::vector<std::string> split(std::string &alignment);
