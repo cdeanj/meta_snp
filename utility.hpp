@@ -1,12 +1,12 @@
-#ifndef UTILITY_H
-#define UTILITY_H
+#ifndef UTILITY_HPP
+#define UTILITY_HPP
 
 #include <map>
 #include <string>
 #include <vector>
 #include <utility>
 
-extern std::map<std::string,std::pair<std::string,int> > snip_db;
+extern std::map<std::string,std::vector<std::pair<std::string,int> > > snip_db;
 
 namespace utility {
 	std::vector<std::string> split(std::string &alignment);
@@ -25,4 +25,4 @@ namespace utility {
 	bool is_good_pos(const int pos);
 }
 
-#endif // UTILITY_H
+#endif // UTILITY_HPP

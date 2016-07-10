@@ -26,22 +26,29 @@ void print_records(map<string,string> &r) {
 
 void print_snip_db() {
 	for(auto key = snip_db.begin(); key != snip_db.end(); ++key) {
-		cout << key->first << " " << key->second.first << " " << key->second.second << endl;
+		for(auto val = key->second.begin(); val != key->second.end(); ++val) {
+			cout << key->first << " " << val->first << " " << val->second << endl;
+		}
 	}
 }
 
 int main(int argc, const char *argv[]) {
-	fasta_reader fr(argv[1]);
+	struct cmd_args args;
+	args = parse_command_line(argc, argv);
+
+	fasta_reader fr(args.amr_fp);
 	map<string,string> records = fr.read();
 
-	sam_reader sr(argv[2], 0);
+	sam_reader sr(args.sam_fp, args.mode);
 	std::unordered_map<std::string,std::vector<std::string> > alignments = sr.read();
 
 	for(auto key = alignments.begin(); key != alignments.end(); ++key) {
 		find_snips(records, key->second.begin(), key->second.end());
-	}	
+	}
 
-	print_snip_db();	
+	cout << args.mode << endl;
+
+	//print_snip_db();	
 
 	return 0;
 }

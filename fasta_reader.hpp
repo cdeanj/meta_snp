@@ -1,5 +1,5 @@
-#ifndef FASTA_READER_H
-#define FASTA_READER_H
+#ifndef FASTA_READER_HPP
+#define FASTA_READER_HPP
 
 #include <vector>
 #include <string>
@@ -13,4 +13,4 @@ private:
 	std::string _fp;
 };
 
-#endif // FASTA_READER_H
+#endif // FASTA_READER_HPP

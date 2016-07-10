@@ -1,5 +1,5 @@
-#ifndef SNIP_WRITER_H
-#define SNIP_WRITER_H
+#ifndef SNIP_WRITER_HPP
+#define SNIP_WRITER_HPP
 
 #include <map>
 #include <string>
@@ -14,4 +14,4 @@ private:
 };
 
 
-#endif // SNIP_WRITER_H
+#endif // SNIP_WRITER_HPP

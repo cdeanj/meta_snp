@@ -1,5 +1,5 @@
-#ifndef SAM_READER_H
-#define SAM_READER_H
+#ifndef SAM_READER_HPP
+#define SAM_READER_HPP
 
 #include <string>
 #include <vector>
@@ -20,4 +20,4 @@ private:
 	int _mode;
 };
 
-#endif // SAM_READER_H
+#endif // SAM_READER_HPP

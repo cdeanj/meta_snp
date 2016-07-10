@@ -1,5 +1,5 @@
-#ifndef SNIP_PARSER_H
-#define SNIP_PARSER_H
+#ifndef SNIP_PARSER_HPP
+#define SNIP_PARSER_HPP
 
 #include <map>
 #include <string>
@@ -120,4 +120,4 @@ void find_snips(std::map<std::string,std::string> &records, Iter start, Iter sto
 }
 
 
-#endif // SNIP_PARSER_H
+#endif // SNIP_PARSER_HPP
