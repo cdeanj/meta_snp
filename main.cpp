@@ -7,6 +7,7 @@
 #include "snip_parser.hpp"
 #include "fasta_reader.hpp"
 #include "sam_reader.hpp"
+#include "snip_writer.hpp"
 
 using namespace std;
 
@@ -46,9 +47,8 @@ int main(int argc, const char *argv[]) {
 		find_snips(records, key->second.begin(), key->second.end());
 	}
 
-	cout << args.mode << endl;
-
-	//print_snip_db();	
+	snip_writer sw(args.out_fp);
+	sw.write_snips(snip_db);
 
 	return 0;
 }

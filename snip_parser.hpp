@@ -110,6 +110,7 @@ void find_snips(std::map<std::string,std::string> &records, Iter start, Iter sto
 		*start++; // jump to next alignment in pair
 	}
 	if(!pattern.empty()) {
+		pattern.erase(pattern.length()-1);
 		if(pattern_exists(pattern, parts[1])) {
 			update_count(pattern, parts[1]);
 		}
