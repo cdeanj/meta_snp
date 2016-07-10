@@ -7,18 +7,35 @@
 #include <utility>
 #include <iostream>
 #include <stdlib.h>
+#include <algorithm>
 
 #include "utility.hpp"
 
-std::map<std::string,std::pair<std::string,int> > snip_db;
+std::map<std::string,std::vector<std::pair<std::string,int> > > snip_db;
 
-bool pattern_exists(const std::string &haplotype_pattern) {
-	for(auto key = snip_db.begin(); key != snip_db.end(); ++key) {
-                if(key->second.first == haplotype_pattern) {
-                        return true;
+// TODO: Update function to return iterator to found element, so we don't have to traverse
+// map twice when we update haplotype occurrence
+bool pattern_exists(const std::string &haplotype_pattern, const std::string &key) {
+	std::map<std::string,std::vector<std::pair<std::string,int> > >::iterator k = snip_db.find(key);
+	if(k != snip_db.end()) {
+		for(auto v = k->second.begin(); v != k->second.end(); ++v) {
+			if(v->first == haplotype_pattern) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+void update_count(const std::string &haplotype_pattern, const std::string &key) {
+	std::map<std::string,std::vector<std::pair<std::string,int> > >::iterator k = snip_db.find(key);
+        if(k != snip_db.end()) {
+                for(auto v = k->second.begin(); v != k->second.end(); ++v) {
+                        if(v->first == haplotype_pattern) {
+				v->second++;
+                        }
                 }
         }
-        return false;	
 }
 
 template <class Iter>
@@ -93,11 +110,11 @@ void find_snips(std::map<std::string,std::string> &records, Iter start, Iter sto
 		*start++; // jump to next alignment in pair
 	}
 	if(!pattern.empty()) {
-		if(pattern_exists(pattern)) {
-			snip_db[parts[1]].second++;
+		if(pattern_exists(pattern, parts[1])) {
+			update_count(pattern, parts[1]);
 		}
 		else {
-        		snip_db.insert(make_pair(parts[1], std::pair<std::string,int>(pattern,1)));
+			snip_db[parts[1]].push_back(std::pair<std::string,int>(pattern,1));
 		}
         }
 }
