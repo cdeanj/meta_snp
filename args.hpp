@@ -8,9 +8,9 @@ struct cmd_args {
 	std::string sam_fp;
 	std::string out_fp;
 
-	bool sampe;
-	bool samse;
-	bool best;
+	bool sampe = false;
+	bool samse = false;
+	bool best = false;
 	int mode;
 };
 

@@ -6,7 +6,7 @@
 #include <vector>
 #include <utility>
 
-extern std::map<std::string,std::vector<std::pair<std::string,int> > > snip_db;
+extern std::map<std::string,std::map<std::string,int> > snip_db;
 
 namespace utility {
 	std::vector<std::string> split(std::string &alignment);

@@ -1,46 +1,27 @@
 #ifndef SNIP_PARSER_HPP
 #define SNIP_PARSER_HPP
 
-#include <map>
+#include <set>
 #include <string>
-#include <vector>
-#include <utility>
 #include <iostream>
 #include <stdlib.h>
 #include <algorithm>
 
 #include "utility.hpp"
 
-std::map<std::string,std::vector<std::pair<std::string,int> > > snip_db;
+std::map<std::string,std::map<std::string,int> > snip_db;
 
-// TODO: Update function to return iterator to found element, so we don't have to traverse
-// map twice when we update haplotype occurrence
-bool pattern_exists(const std::string &haplotype_pattern, const std::string &key) {
-	std::map<std::string,std::vector<std::pair<std::string,int> > >::iterator k = snip_db.find(key);
-	if(k != snip_db.end()) {
-		for(auto v = k->second.begin(); v != k->second.end(); ++v) {
-			if(v->first == haplotype_pattern) {
-				return true;
-			}
-		}
+std::string convert_to_haplotype(const std::set<std::string> &pattern) {
+	std::string haplotype;
+	for(auto snip = pattern.begin(); snip != pattern.end(); ++snip) {
+		haplotype += *snip;
 	}
-	return false;
-}
-
-void update_count(const std::string &haplotype_pattern, const std::string &key) {
-	std::map<std::string,std::vector<std::pair<std::string,int> > >::iterator k = snip_db.find(key);
-        if(k != snip_db.end()) {
-                for(auto v = k->second.begin(); v != k->second.end(); ++v) {
-                        if(v->first == haplotype_pattern) {
-				v->second++;
-                        }
-                }
-        }
+	return haplotype;
 }
 
 template <class Iter>
 void find_snips(std::map<std::string,std::string> &records, Iter start, Iter stop) {
-	std::string pattern;
+	std::set<std::string> pattern;
 	std::vector<std::string> parts;
 
 	while(start != stop) {
@@ -73,7 +54,8 @@ void find_snips(std::map<std::string,std::string> &records, Iter start, Iter sto
                                 	base_in_read = alignment_sequence[read_pos];
 
                                 	if(base_in_ref != base_in_read) {
-                                        	pattern += std::to_string(gene_pos+1) + std::string(1,base_in_ref) + "->" + std::string(1,base_in_read) + ":";
+						std::string snip = std::to_string(gene_pos+1) + std::string(1,base_in_ref) + "->" + std::string(1,base_in_read) + ":";
+						pattern.insert(snip);
                                 	}
                                 	++gene_pos;
                                 	++read_pos;
@@ -109,13 +91,22 @@ void find_snips(std::map<std::string,std::string> &records, Iter start, Iter sto
         	}
 		*start++; // jump to next alignment in pair
 	}
+	
 	if(!pattern.empty()) {
-		pattern.erase(pattern.length()-1);
-		if(pattern_exists(pattern, parts[1])) {
-			update_count(pattern, parts[1]);
+		std::string haplotype = convert_to_haplotype(pattern);
+		haplotype.erase(haplotype.length()-1);
+		/*if(haplotype_exists(haplotype, parts[1])) {
+			update_count(haplotype, parts[1]);
 		}
 		else {
-			snip_db[parts[1]].push_back(std::pair<std::string,int>(pattern,1));
+			snip_db[parts[1]].push_back(std::pair<std::string,int>(haplotype,1));
+		}*/
+		//snip_db[parts[1]].push_back(std::pair<std::string,int>(haplotype,1));
+		if(snip_db[parts[1]].find(haplotype) == snip_db[parts[1]].end()) {
+			snip_db[parts[1]].insert(make_pair(haplotype,1));
+		}
+		else {
+			snip_db[parts[1]][haplotype]++;
 		}
         }
 }

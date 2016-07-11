@@ -1,6 +1,7 @@
 #include "args.hpp"
 #include <vector>
 #include <stdlib.h>
+#include <iostream>
 
 void usage() {
         fprintf(stderr, "\n");
