@@ -95,13 +95,7 @@ void find_snips(std::map<std::string,std::string> &records, Iter start, Iter sto
 	if(!pattern.empty()) {
 		std::string haplotype = convert_to_haplotype(pattern);
 		haplotype.erase(haplotype.length()-1);
-		/*if(haplotype_exists(haplotype, parts[1])) {
-			update_count(haplotype, parts[1]);
-		}
-		else {
-			snip_db[parts[1]].push_back(std::pair<std::string,int>(haplotype,1));
-		}*/
-		//snip_db[parts[1]].push_back(std::pair<std::string,int>(haplotype,1));
+
 		if(snip_db[parts[1]].find(haplotype) == snip_db[parts[1]].end()) {
 			snip_db[parts[1]].insert(make_pair(haplotype,1));
 		}
