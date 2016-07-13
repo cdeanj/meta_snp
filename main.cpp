@@ -13,6 +13,10 @@
 using namespace std;
 
 int main(int argc, const char *argv[]) {
+	if(argc < 7 || argc > 8) {
+                usage();
+                return -1;
+        }
 	struct cmd_args args;
 	args = parse_command_line(argc, argv);
 

@@ -12,7 +12,7 @@ void usage() {
         fprintf(stderr, "   -samse STRING           single-end alignments\n");
         fprintf(stderr, "   -sampe STRING           paired-end alignments\n");
         fprintf(stderr, "   -b BOOLEAN              filter on unique alignments\n");
-        fprintf(stderr, "   -out_fp STRING          output path or(file)\n\n");
+        fprintf(stderr, "   -out_fp STRING          output path\n\n");
 }
 
 cmd_args parse_command_line(int argc, const char *argv[]) {
@@ -39,6 +39,7 @@ cmd_args parse_command_line(int argc, const char *argv[]) {
 			arg.best = true;		
 		}
 		else {
+			usage();
 			exit(EXIT_FAILURE);						
 		}
 	}
