@@ -1,15 +1,15 @@
-Meta SNP: A simple naive metagenomics variant caller written in C++.
+SnipFinder: A simple naive metagenomics variant caller written in C++.
 
 #### Installation
 ```
-git clone https://github.com/cdeanj/meta_snp.git
-cd meta_snp
+git clone https://github.com/cdeanj/snipfinder.git
+cd snipfinder
 make
-./metasnp
+./snipfinder
 ```
 
 #### Usage
-Usage: ./metasnp [options]
+Usage: ./snipfinder [options]
 
 Pipeline Options:
 
@@ -34,9 +34,9 @@ Gene    Haplotype Pattern   Occurrence
 #### Example
 Call variants from a paired alignment file
 ```
-./metasnp -amr_fp ref.fa -sampe paired.sam -out_fp result.tabular
+./snipfinder -amr_fp ref.fa -sampe paired.sam -out_fp result.tabular
 ```
 Call variants from a paired alignment file and filter on unique alignments. To filter, only alignments with a valid XT:A:U tag are considered
 ```
-./metasnp -amr_fp ref.fa -sampe paired.sam -b -out_fp result.tabular
+./snipfinder -amr_fp ref.fa -sampe paired.sam -b -out_fp result.tabular
 ```
