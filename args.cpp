@@ -5,8 +5,8 @@
 
 void usage() {
         fprintf(stderr, "\n");
-        fprintf(stderr, "Program: metasnp \n");
-        fprintf(stderr, "Usage: metasnp [options] -amr_fp <fasta_file> -sampe/se <sam_file> -out_fp <output_file>\n\n");
+        fprintf(stderr, "Program: snipfinder \n");
+        fprintf(stderr, "Usage: snpfinder [options] -amr_fp <fasta_file> -sampe/se <sam_file> -out_fp <output_file>\n\n");
         fprintf(stderr, "Options:\n\n");
         fprintf(stderr, "   -amr_fp STRING          amr database\n");
         fprintf(stderr, "   -samse STRING           single-end alignments\n");

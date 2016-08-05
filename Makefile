@@ -1,5 +1,5 @@
 output: main.o fasta_reader.o sam_reader.o utility.o snip_writer.o args.o
-	g++ -std=c++11 main.o fasta_reader.o sam_reader.o utility.o snip_writer.o args.o -o metasnp
+	g++ -std=c++11 main.o fasta_reader.o sam_reader.o utility.o snip_writer.o args.o -o snpfinder
 main.o: main.cpp
 	g++ -c -std=c++11 main.cpp
 fasta_reader.o: fasta_reader.cpp
@@ -13,4 +13,4 @@ snip_writer.o: snip_writer.cpp
 args.o: args.cpp
 	g++ -c -std=c++11 args.cpp
 clean:
-	rm *.o metasnp
+	rm *.o snpfinder
