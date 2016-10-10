@@ -1,42 +1,34 @@
-SnipFinder: A simple naive metagenomics variant caller written in C++.
+# SnipFinder
 
-#### Installation
-```
-git clone https://github.com/cdeanj/snipfinder.git
-cd snipfinder
-make
-./snipfinder
-```
-
-#### Usage
-Usage: ./snipfinder [options]
-
-Pipeline Options:
-
-    -amr_fp     STR/FILE        fasta file path	    
-    -samse      STR/FILE        single-end sam file path
-    -sampe      STR/FILE        paired-end sam file path
-    -b          BOOL            filter on unique alignments
-    -out_fp     STR/FILE        output file path
-
-
-#### Output
-
-The output is a tab delimited text file with three columns
-```
-Gene    Haplotype Pattern   Occurrence
+## Installation
+```bash
+$ git clone https://github.com/cdeanj/snipfinder.git
+$ cd snipfinder
+$ make
+$ ./snipfinder
 ```
 
-* Gene: The gene where haplotypes occurred
-* Haplotype Pattern: The haplotype pattern occurring within a gene
-* Occurrence: The amount of times a haplotype pattern occurred within a gene
+## Usage
+```bash
+$ ./snipfinder [options]
+```
 
-#### Example
-Call variants from a paired alignment file
+## Options
+
+##### `-amr_fp`
+Path to fasta formatted resistance database
+```bash
+$ -amr_fp /path/to/your/resistance_database.fasta
 ```
-./snipfinder -amr_fp ref.fa -sampe paired.sam -out_fp result.tabular
+
+##### `-sam_fp`
+Path to SAM formatted alignment file
+```bash
+$ -sam_fp /path/to/your/alignment.sam
 ```
-Call variants from a paired alignment file and filter on unique alignments. To filter, only alignments with a valid XT:A:U tag are considered
-```
-./snipfinder -amr_fp ref.fa -sampe paired.sam -b -out_fp result.tabular
+
+##### `-out_fp`
+Output file path
+```bash
+$ -out_fp /path/to/your/output.txt
 ```
