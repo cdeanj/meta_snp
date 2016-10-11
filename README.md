@@ -1,4 +1,5 @@
 # SnipFinder
+SnipFinder is a simple alignment-based haplotype variant caller that can be used with metagenomic sequence data. Input to SnipFinder is an alignment file ([SAM](http://samtools.github.io/hts-specs/SAMv1.pdf)) and a FASTA formatted reference database. Output is a tab delimited text file with 3 columns: Gene, Haplotype Pattern, and Occurrence. The gene corresponds to the reference sequence for which haplotypes were identified within a single or read-pair. The haplotype pattern is the haplotype sequence identified within a single or read-pair. Occurrence is the number of times the current haplotype pattern was identified within a particular reference sequence.
 
 ## Installation
 ```bash
