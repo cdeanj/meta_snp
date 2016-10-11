@@ -22,10 +22,16 @@ Path to fasta formatted resistance database
 $ -amr_fp /path/to/your/resistance_database.fasta
 ```
 
-##### `-sam_fp`
-Path to SAM formatted alignment file
+##### `-samse`
+Path to single-end SAM formatted alignment file
 ```bash
-$ -sam_fp /path/to/your/alignment.sam
+$ -samse /path/to/your/single_alignment.sam
+```
+
+##### `-sampe`
+Path to paired-end SAM formatted alignment file
+```
+$ -sampe /path/to/your/paired_alignment.sam
 ```
 
 ##### `-b`
