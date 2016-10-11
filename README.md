@@ -28,6 +28,12 @@ Path to SAM formatted alignment file
 $ -sam_fp /path/to/your/alignment.sam
 ```
 
+##### `-b`
+Boolean flag for filtering on unique alignments
+```
+$ -b
+```
+
 ##### `-out_fp`
 Output file path
 ```bash
