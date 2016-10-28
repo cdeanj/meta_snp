@@ -9,7 +9,7 @@ Output is a single [TSV](https://en.wikipedia.org/wiki/Tab-separated_values) for
 ## Installation
 ```bash
 $ git clone https://github.com/cdeanj/snpfinder.git
-$ cd snipfinder
+$ cd snpfinder
 $ make
 $ ./snpfinder
 ```
