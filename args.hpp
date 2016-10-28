@@ -7,7 +7,6 @@ struct cmd_args {
 	std::string amr_fp;
 	std::string sam_fp;
 	std::string out_fp;
-
 	bool sampe = false;
 	bool samse = false;
 	bool best = false;
