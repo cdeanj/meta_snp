@@ -1,5 +1,5 @@
 CC=g++
-TARGET := snipfinder
+TARGET := snpfinder
 CXX_SRCS := $(wildcard *.cpp)
 CXX_OBJS := ${CXX_SRCS:.cpp=.o}
 CFLAGS := -c -std=c++11
