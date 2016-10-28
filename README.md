@@ -1,22 +1,22 @@
-# SnipFinder
+# SNPFinder
 
 ## Overview
-SnipFinder is a simple alignment-based haplotype variant caller that can be used with metagenomic sequence data. Input to SnipFinder is a [SAM](http://samtools.github.io/hts-specs/SAMv1.pdf) formatted alignment file and a [FASTA](https://en.wikipedia.org/wiki/FASTA_format) formatted reference database. 
+SNPFinder is a simple alignment-based haplotype variant caller that can be used with metagenomic sequence data. Input to SnipFinder is a [SAM](http://samtools.github.io/hts-specs/SAMv1.pdf) formatted alignment file and a [FASTA](https://en.wikipedia.org/wiki/FASTA_format) formatted reference database. 
 
 ## Output
 Output is a single [TSV](https://en.wikipedia.org/wiki/Tab-separated_values) formatted text file with three columns: *Gene, Haplotype Pattern, and Occurrence*. The gene corresponds to the reference sequence for which haplotypes were identified within a single or read-pair. The haplotype pattern is the haplotype sequence identified within a single or read-pair. Occurrence is the number of times the current haplotype pattern was identified within a target reference sequence.
 
 ## Installation
 ```bash
-$ git clone https://github.com/cdeanj/snipfinder.git
+$ git clone https://github.com/cdeanj/snpfinder.git
 $ cd snipfinder
 $ make
-$ ./snipfinder
+$ ./snpfinder
 ```
 
 ## Usage
 ```bash
-$ ./snipfinder [options]
+$ ./snpfinder [options]
 ```
 
 ## Options
