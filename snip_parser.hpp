@@ -63,7 +63,6 @@ void find_snips(std::map<std::string,std::string> &records, Iter start, Iter sto
                 	}
                 	else if(operation == 'I') {
                         	read_pos += occurrence;
-                        	gene_pos += occurrence;
                 	}
                 	else if(operation == 'S') {
                         	read_pos += occurrence;
@@ -72,8 +71,7 @@ void find_snips(std::map<std::string,std::string> &records, Iter start, Iter sto
                         	gene_pos += occurrence;
                 	}
                 	else if(operation == 'P') {
-                        	read_pos += occurrence;
-                        	gene_pos += occurrence;
+				break;
                 	}
                 	else if(operation == 'D') {
                         	gene_pos += occurrence;
