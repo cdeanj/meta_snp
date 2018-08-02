@@ -44,12 +44,8 @@ void find_snips(std::map<std::string,std::string> &records, Iter start, Iter sto
                 	int occurrence = cigar[i].first;
                 	char operation = cigar[i].second;
 
-                	if(operation == 'M' || operation == '=') {
+                	if(operation == 'M' || operation == '=' || operation == 'X') {
                         	for(int k = 0; k < occurrence; k++) {
-                                	if(gene_pos >= ref_len || read_pos >= read_len) {
-                                        	break;
-                                	}
-
                                 	base_in_ref = ref_sequence[gene_pos];
                                 	base_in_read = alignment_sequence[read_pos];
 
@@ -71,17 +67,11 @@ void find_snips(std::map<std::string,std::string> &records, Iter start, Iter sto
                         	gene_pos += occurrence;
                 	}
                 	else if(operation == 'P') {
-				break;
                 	}
                 	else if(operation == 'D') {
                         	gene_pos += occurrence;
                 	}
-			else if(operation == 'X') {
-                        	read_pos += occurrence;
-                        	gene_pos += occurrence;
-                	}
                 	else if(operation == 'H') {
-                        	break;
                 	}
                 	else {
                         	std::cout << "Operation " << operation << " not handled." << std::endl;
